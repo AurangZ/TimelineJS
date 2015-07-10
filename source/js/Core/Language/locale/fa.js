@@ -1,4 +1,6 @@
-﻿if(typeof VMM != 'undefined') {
+﻿/* Farsi LANGUAGE 
+================================================== */
+if(typeof VMM != 'undefined') {
 	VMM.Language = {
 		lang: "fa",
 		right_to_left:!0,
@@ -15,12 +17,12 @@
 			year: "yyyy",
 			month_short: "mmm",
 			month: "mmmm yyyy",
-			full_short: "mmm d",
-			full: "mmmm d',' yyyy",
-			full: "mmmm d',' yyyy",
+			full_short: "d mmm",
+			full: "d mmmm' 'yyyy",
+			time_short: "h:MM:ss TT",
 			time_no_seconds_short: "h:MM TT",
 			time_no_seconds_short: "h:MM TT",
-			full_long: "mmm d',' yyyy 'at' h:MM TT",
+			full_long: "d mmm yyyy 'at' h:MM TT",
 			full_long_small_date: "h:MM TT'<br/><small>mmm d',' yyyy'</small>'"
 		},
 		messages: {
@@ -31,6 +33,7 @@
 			wikipedia: "از ویکی پدیا، دانشنامه آزاد",
 			loading_content: "بارگذاری",
 			loading: "بارگذاری",
-			swipe_nav: "Swipe to Navigate"		}
+			swipe_nav: "Swipe to Navigate"
+        }
 	}
 }

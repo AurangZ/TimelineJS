@@ -74,6 +74,12 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 			} else {
 				date = new Date(0); 
 				date.setMonth(0); date.setDate(1); date.setHours(0); date.setMinutes(0); date.setSeconds(0); date.setMilliseconds(0);
+
+                /* Added to convert Farsi numbers to English */
+                if (VMM.Language.lang == "fa") {
+                    d = VMM.Date.convertToEnglish(d);
+                }
+
 				if ( d.match(/,/gi) ) {
 					date_array = d.split(",");
 					for(var i = 0; i < date_array.length; i++) {
@@ -297,8 +303,40 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 			}
 		},
 		
-		
-			
+		// Converts English numbers to Farsi
+        convertToFarsi: function(value) {
+            var newValue="";
+            for (var i=0;i<value.length;i++)
+            {
+                var ch=value.charCodeAt(i);
+                if (ch >= 48 && ch <= 57)
+                {
+                    var newChar=ch+1728;
+                    newValue = newValue + String.fromCharCode(newChar);
+                }
+                else 
+                    newValue = newValue + String.fromCharCode(ch);
+            }
+            return newValue;
+        },
+
+        convertToEnglish: function(value) {
+            var newValue="";
+            for (var i=0;i<value.length;i++) {
+                var ch=value.charCodeAt(i);
+                if (ch >= 1776 && ch <= 1785) {
+                    var newChar=ch-1728;
+                    newValue = newValue + String.fromCharCode(newChar);
+                } else if (ch >= 1632 && ch <= 1641) {
+                    var newChar=ch-1584;
+                    newValue = newValue + String.fromCharCode(newChar);
+                } else {
+                    newValue = newValue + String.fromCharCode(ch);
+                }
+            }
+            return newValue;
+        },
+
 		prettyDate: function(d, is_abbr, p, d2) {
 			var _date,
 				_date2,

@@ -1259,6 +1259,12 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 			} else {
 				date = new Date(0); 
 				date.setMonth(0); date.setDate(1); date.setHours(0); date.setMinutes(0); date.setSeconds(0); date.setMilliseconds(0);
+
+                /* Added to convert Farsi numbers to English */
+                if (VMM.Language.lang == "fa") {
+                    d = VMM.Date.convertToEnglish(d);
+                }
+
 				if ( d.match(/,/gi) ) {
 					date_array = d.split(",");
 					for(var i = 0; i < date_array.length; i++) {
@@ -5721,7 +5727,11 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 							VMM.attachElement(navigation.prevDate, _title);
 							VMM.attachElement(navigation.prevTitle, "");
 						} else {
-							VMM.attachElement(navigation.prevDate, VMM.Date.prettyDate(data[current_slide - 1].startdate, false, data[current_slide - 1].precisiondate));
+                            if (VMM.Language.lang == "fa") {
+							    VMM.attachElement(navigation.prevDate, VMM.Date.convertToFarsi(VMM.Date.prettyDate(data[current_slide - 1].startdate), false, data[current_slide - 1].precisiondate));
+                            } else {
+    							VMM.attachElement(navigation.prevDate, VMM.Date.prettyDate(data[current_slide - 1].startdate, false, data[current_slide - 1].precisiondate));
+                            }
 							VMM.attachElement(navigation.prevTitle, _title);
 						}
 					} else {
@@ -5739,7 +5749,11 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 							VMM.attachElement(navigation.nextDate, _title);
 							VMM.attachElement(navigation.nextTitle, "");
 						} else {
-							VMM.attachElement(navigation.nextDate, VMM.Date.prettyDate(data[current_slide + 1].startdate, false, data[current_slide + 1].precisiondate) );
+                            if (VMM.Language.lang == "fa") {
+							    VMM.attachElement(navigation.nextDate, VMM.Date.convertToFarsi(VMM.Date.prettyDate(data[current_slide + 1].startdate), false, data[current_slide + 1].precisiondate) );
+                            } else {
+							    VMM.attachElement(navigation.nextDate, VMM.Date.prettyDate(data[current_slide + 1].startdate, false, data[current_slide + 1].precisiondate) );
+                            }
 							VMM.attachElement(navigation.nextTitle, _title);
 						}
 					} else {
@@ -6088,6 +6102,12 @@ if (typeof VMM.Slider != 'undefined') {
 					if (data.type != "start") {
 						var st	= VMM.Date.prettyDate(data.startdate, false, data.precisiondate);
 						var en	= VMM.Date.prettyDate(data.enddate, false, data.precisiondate);
+
+                        if (VMM.Language.lang == "fa") {
+                            st = VMM.Date.convertToFarsi(st);
+                            en = VMM.Date.convertToFarsi(en);
+                        }
+
 						var tag	= "";
 						/* TAG / CATEGORY
 						================================================== */
@@ -8891,6 +8911,10 @@ if(typeof VMM.Timeline != 'undefined' && typeof VMM.Timeline.TimeNav == 'undefin
 				if (int_obj.relative_pos.begin > _largest_pos) {
 					_largest_pos = int_obj.relative_pos.begin;
 				}
+
+                if (VMM.Language.lang == "fa") {
+                    int_obj.date_string = VMM.Date.convertToFarsi(int_obj.date_string);
+                }
 				
 				// Add the time string to the element and position it.
 				VMM.appendElement(int_obj.element, int_obj.date_string);

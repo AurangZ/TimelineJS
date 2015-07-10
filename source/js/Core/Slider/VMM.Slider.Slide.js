@@ -196,6 +196,12 @@ if (typeof VMM.Slider != 'undefined') {
 					if (data.type != "start") {
 						var st	= VMM.Date.prettyDate(data.startdate, false, data.precisiondate);
 						var en	= VMM.Date.prettyDate(data.enddate, false, data.precisiondate);
+
+                        if (VMM.Language.lang == "fa") {
+                            st = VMM.Date.convertToFarsi(st);
+                            en = VMM.Date.convertToFarsi(en);
+                        }
+
 						var tag	= "";
 						/* TAG / CATEGORY
 						================================================== */

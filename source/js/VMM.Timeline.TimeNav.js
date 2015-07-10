@@ -1225,6 +1225,10 @@ if(typeof VMM.Timeline != 'undefined' && typeof VMM.Timeline.TimeNav == 'undefin
 				if (int_obj.relative_pos.begin > _largest_pos) {
 					_largest_pos = int_obj.relative_pos.begin;
 				}
+
+                if (VMM.Language.lang == "fa") {
+                    int_obj.date_string = VMM.Date.convertToFarsi(int_obj.date_string);
+                }
 				
 				// Add the time string to the element and position it.
 				VMM.appendElement(int_obj.element, int_obj.date_string);

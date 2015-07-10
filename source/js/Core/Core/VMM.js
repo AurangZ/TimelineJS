@@ -309,7 +309,6 @@ if (typeof VMM == 'undefined') {
 			}, false );
 		}
 	};
-	
 
 }
 
