@@ -1,5 +1,5 @@
 /*
-    TimelineJS - ver. 2015-06-10-16-17-35 - 2015-06-10
+    TimelineJS - ver. 2015-07-13-19-55-14 - 2015-07-13
     Copyright (c) 2012-2015 Northwestern University
     a project of the Northwestern University Knight Lab, originally created by Zach Wise
     https://github.com/NUKnightLab/TimelineJS
@@ -322,7 +322,6 @@ if (typeof VMM == 'undefined') {
 			}, false );
 		}
 	};
-	
 
 }
 
@@ -1488,8 +1487,40 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 			}
 		},
 		
-		
-			
+		// Converts English numbers to Farsi
+        convertToFarsi: function(value) {
+            var newValue="";
+            for (var i=0;i<value.length;i++)
+            {
+                var ch=value.charCodeAt(i);
+                if (ch >= 48 && ch <= 57)
+                {
+                    var newChar=ch+1728;
+                    newValue = newValue + String.fromCharCode(newChar);
+                }
+                else 
+                    newValue = newValue + String.fromCharCode(ch);
+            }
+            return newValue;
+        },
+
+        convertToEnglish: function(value) {
+            var newValue="";
+            for (var i=0;i<value.length;i++) {
+                var ch=value.charCodeAt(i);
+                if (ch >= 1776 && ch <= 1785) {
+                    var newChar=ch-1728;
+                    newValue = newValue + String.fromCharCode(newChar);
+                } else if (ch >= 1632 && ch <= 1641) {
+                    var newChar=ch-1584;
+                    newValue = newValue + String.fromCharCode(newChar);
+                } else {
+                    newValue = newValue + String.fromCharCode(ch);
+                }
+            }
+            return newValue;
+        },
+
 		prettyDate: function(d, is_abbr, p, d2) {
 			var _date,
 				_date2,
@@ -1764,6 +1795,7 @@ if(typeof VMM != 'undefined' && typeof VMM.Date == 'undefined') {
 	};
 	
 }
+
 
 /* **********************************************
      Begin VMM.Util.js
@@ -5558,12 +5590,14 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 				VMM.Lib.css(".slider-item .layout-text-media .text", "display", "table-cell" );
 				VMM.Lib.css(".slider-item .layout-text-media .text .container", "display", "table-cell" );
 				VMM.Lib.css(".slider-item .layout-text-media .text .container", "width", "auto" );
+				VMM.Lib.css(".slider-item .layout-text-media .text .container", "float", "right" );
 				VMM.Lib.css(".slider-item .layout-text-media .text .container .start", "width", mediasize.text_media.text.width );
 				//VMM.Lib.addClass(".slider-item .content-container", "pad-left");
 				VMM.Lib.removeClass(".slider-item .content-container", "pad-top");
 				
 				VMM.Lib.css(".slider-item .layout-text-media .media", "float", "left" );
 				VMM.Lib.css(".slider-item .layout-text-media", "display", "table" );
+				VMM.Lib.css(".slider-item .layout-text-media", "width", "100%" );
 				
 				VMM.Lib.css(".slider-item .media blockquote p", "line-height", "36px" );
 				VMM.Lib.css(".slider-item .media blockquote p", "font-size", "28px" );
@@ -7451,10 +7485,6 @@ if(typeof VMM != 'undefined' && typeof VMM.Timeline == 'undefined') {
 		/* BUILD DISPLAY
 		================================================== */
 		function build() {
-			if (!(data && data.date && data.date.length && data.date.length > 0)) {
-				showMessege(null, "Error reading data.");
-				return;
-			}
 			// START AT SLIDE
 			if (parseInt(config.start_at_slide) > 0 && config.current_slide == 0) {
 				config.current_slide = parseInt(config.start_at_slide); 
