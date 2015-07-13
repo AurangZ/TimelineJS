@@ -471,12 +471,14 @@ if(typeof VMM != 'undefined' && typeof VMM.Slider == 'undefined') {
 				VMM.Lib.css(".slider-item .layout-text-media .text", "display", "table-cell" );
 				VMM.Lib.css(".slider-item .layout-text-media .text .container", "display", "table-cell" );
 				VMM.Lib.css(".slider-item .layout-text-media .text .container", "width", "auto" );
+				VMM.Lib.css(".slider-item .layout-text-media .text .container", "float", "right" );
 				VMM.Lib.css(".slider-item .layout-text-media .text .container .start", "width", mediasize.text_media.text.width );
 				//VMM.Lib.addClass(".slider-item .content-container", "pad-left");
 				VMM.Lib.removeClass(".slider-item .content-container", "pad-top");
 				
 				VMM.Lib.css(".slider-item .layout-text-media .media", "float", "left" );
 				VMM.Lib.css(".slider-item .layout-text-media", "display", "table" );
+				VMM.Lib.css(".slider-item .layout-text-media", "width", "100%" );
 				
 				VMM.Lib.css(".slider-item .media blockquote p", "line-height", "36px" );
 				VMM.Lib.css(".slider-item .media blockquote p", "font-size", "28px" );
