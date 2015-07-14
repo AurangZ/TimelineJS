@@ -8,12 +8,12 @@
   ],
   "description": "A Storytelling Timeline built in JavaScript.",
   "main": [
-    "//timeline.asl19.org/libs/timeline/latest/js/timeline.js",
-    "//timeline.asl19.org/libs/timeline/latest/css/timeline.css",
-    "//timeline.asl19.org/libs/timeline/latest/embed/index.html",
-    "//timeline.asl19.org/libs/timeline/latest/js/storyjs-embed.js",
-    "//timeline.asl19.org/libs/timeline/latest/js/storyjs-embed-generator.js",
-    "//timeline.asl19.org/libs/timeline/latest/js/storyjs-embed-cdn.js"
+    "build/js/timeline.js",
+    "build/css/timeline.css",
+    "build/embed/index.html",
+    "build/js/storyjs-embed.js",
+    "build/js/storyjs-embed-generator.js",
+    "build/js/storyjs-embed-cdn.js"
   ],
   "keywords": [
     "timeline",

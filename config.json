@@ -186,12 +186,12 @@
             }                
         },
         "prd": {
-            "bucket": "timeline.knightlab.com", 
+            "bucket": "timeline.asl19.org", 
             "usemin_context": {
                 "cdn": "latest"
             },
             "deploy_context": {
-                "generator_embed_path": "//cdn.knightlab.com/libs/timeline/latest/embed/index.html"
+                "generator_embed_path": "//timeline.asl19.org/libs/timeline/latest/embed/index.html"
             }                
         }
     }
